@@ -1,2 +1,58 @@
 import camion.*
 import cosas.*
+
+test "test pack ladrillos"{
+	
+	assert.equals(0,paqueteLadrillos.peso())
+	paqueteLadrillos.cantidadDe(10)
+	assert.equals(20,paqueteLadrillos.peso())
+}
+ 
+test "test arena"{
+	
+	assert.equals(0,arena.peso())
+	arena.cantidadDe(10)
+	assert.equals(10,arena.peso())
+}
+
+test "batería antiaérea"{
+	
+	assert.equals(300,bateriaAntiarea.peso())
+	assert.equals(100,bateriaAntiarea.peligro())
+	bateriaAntiarea.misilesNoDisponibles()
+	assert.equals(200,bateriaAntiarea.peso())
+	assert.equals(0,bateriaAntiarea.peligro())
+}
+ 
+test "contenedor portuario"{
+	
+	assert.equals(100,contenedor.peso())
+	assert.equals(0,contenedor.peligro())
+	contenedor.obtenerPesoYobjeto(bateriaAntiarea)
+	assert.equals(400,contenedor.peso())
+	assert.equals(100,contenedor.peligro())
+}
+
+test "residuos Radioactivos"{
+	
+	assert.equals(0,residuosRadioactivos.peso())
+	assert.equals(200,residuosRadioactivos.peligro())
+	residuosRadioactivos.cantidadDe(200)
+	assert.equals(200,residuosRadioactivos.peso())
+	assert.equals(200,residuosRadioactivos.peligro())
+}
+
+test "embalaje de seguridad"{
+	
+	assert.equals(0,embalajeSeguridad.peso())
+	assert.equals(0,embalajeSeguridad.peligro())
+	embalajeSeguridad.obtenerPesoYobjeto(bateriaAntiarea)
+	assert.equals(300,embalajeSeguridad.peso())
+	assert.equals(50,embalajeSeguridad.peligro())
+}
+
+/* 
+Al embalaje ponerle adentro los residuos radioactivos con 30 kg de peso. 
+Al contenedor, dos o tres cosas a elección. 
+Todo esto en un archivo cosasTest.wtest.
+*/
